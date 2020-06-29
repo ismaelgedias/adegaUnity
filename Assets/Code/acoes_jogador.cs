@@ -1,16 +1,26 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI; 
 
 public class acoes_jogador : MonoBehaviour
 {
     public int[] Uva_escolhida;
     public int terreno_escolhido;
-    public float dinheiro;
+    public int dinheiro;
     public GameObject canvas1;
     public bool pertoPilar = false;
     public bool uiAberta;
+    public Text dinheiro_texto;
+    public Button botão_merlo;
+    public Button botão_malbec;
+    public Button botão_cabernet;
 
+    void Start()
+    {
+        dinheiro = 100;
+       
+    }
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.E) && pertoPilar && !uiAberta)
@@ -25,6 +35,9 @@ public class acoes_jogador : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
             uiAberta = false;
         }
+
+        dinheiro_texto.text = dinheiro.ToString(); 
+
     }
 
     private void OnTriggerEnter(Collider col)
@@ -41,6 +54,20 @@ public class acoes_jogador : MonoBehaviour
             pertoPilar = false;
         }
         canvas1.SetActive(false); 
+    }
+
+    public void Clicou_cabernet()
+    {
+        print("cabernet"); 
+    }
+    public void Clicou_merlot()
+    {
+        print("merlot");
+    }
+
+    public void Clicou_malbec()
+    {
+        print("malbec");
     }
 }
 
